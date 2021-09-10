@@ -2,6 +2,8 @@
 
 #TEST Change 2
 
+#Test change 3: Push from branch and then merge pull
+
 # Project Template: React/Rails API
 
 ## Description
