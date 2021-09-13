@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ onSignup }) {
+export default function SignUp({ setUser }) {
   const classes = useStyles();
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -57,14 +57,14 @@ export default function SignIn({ onSignup }) {
   function handleSubmit(e){
     e.preventDefault()
     console.log(password, username)
-    fetch('/signin', {method: "POST",
+    fetch('/signup', {method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ username, password, password_confirmation: passwordConfirmation })
   }).then((r) => {
     if( r.ok){
-      r.json().then((user) => onSignup(user));
+      r.json().then((user) => setUser(user));
     }else{
       //r.json().then((err) => setErrors(err.errors))
     } 
@@ -82,7 +82,7 @@ export default function SignIn({ onSignup }) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sign up
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
@@ -136,7 +136,7 @@ export default function SignIn({ onSignup }) {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Sign Up
           </Button>
           <Grid container>
             <Grid item xs>

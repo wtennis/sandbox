@@ -1,6 +1,6 @@
 import './App.css';
 import SignIn from './Signin';
-import Signup from './Signup'; 
+import SignUp from './SignUp'; 
 import Home from './Home'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom" 
@@ -25,7 +25,7 @@ function App() {
           <SignIn onSignin = { setUser } />
         </Route>
         <Route path = "/signup"> 
-          <Signup onSignup = { setUser } />
+          <SignUp setUser = { setUser } />
         </Route>
         <Route path ="/">
             <Home user={user} setUser={setUser}></Home>
