@@ -1,0 +1,2 @@
+class TextBoxWidgetsController < ApplicationController
+end

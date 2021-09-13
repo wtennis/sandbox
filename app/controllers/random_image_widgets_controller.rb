@@ -1,0 +1,2 @@
+class RandomImageWidgetsController < ApplicationController
+end

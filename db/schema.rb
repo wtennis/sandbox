@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_153608) do
+ActiveRecord::Schema.define(version: 2021_09_13_175054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "project_widgets", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.integer "widgetable_id"
+    t.string "widgetable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_widgets_on_project_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "description"
+    t.string "title"
+    t.string "category"
+    t.boolean "is_public"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "random_image_widgets", force: :cascade do |t|
+    t.string "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "text_box_widgets", force: :cascade do |t|
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -22,4 +54,5 @@ ActiveRecord::Schema.define(version: 2021_09_13_153608) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "project_widgets", "projects"
 end
