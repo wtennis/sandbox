@@ -24,8 +24,8 @@ function Header({user, setUser}){
     const classes = useStyles();
     const history = useHistory();
 
-    function handleLogout(){
-        fetch('/logout', {method: "DELETE"})
+    function handleSignout(){
+        fetch('/signout', {method: "DELETE"})
         .then(() =>{
             setUser(false)
             history.push("/signin")
@@ -46,7 +46,7 @@ function Header({user, setUser}){
           <Typography variant="h6" className={classes.title}>
             Sandbox
           </Typography>
-          <Button color="inherit" onClick={handleLogout}>Logout</Button>
+          <Button color="inherit" onClick={handleSignout}>Sign out</Button>
         </Toolbar>
       </AppBar>
     </div>
