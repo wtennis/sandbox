@@ -16,3 +16,4 @@ pw1 = ProjectWidget.create(project_id: project1.id, widgetable_id: widget1.id, w
 pw2 = ProjectWidget.create(project_id: project1.id, widgetable_id: widget2.id, widgetable_type: "TextBoxWidget")
 
 puts '✅ Seeding done ✅'
+
