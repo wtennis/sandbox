@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 function Copyright() {
   return (
@@ -47,11 +48,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ onSignin }) {
+export default function SignIn({ setUser }) {
   const classes = useStyles();
   const [password, setPassword] = useState("")
   const [username, setUsername] = useState("")
-
+  const history = useHistory()
 
   function handleSubmit(e){
     e.preventDefault()
@@ -63,7 +64,15 @@ export default function SignIn({ onSignin }) {
     body: JSON.stringify({ username, password })
   }).then((r) => {
     if( r.ok){
-      r.json().then((user) => onSignin(user));
+      r.json().then((user) => 
+       { 
+        setUser(user)
+        history.push('/')
+        }
+       );
+
+      ;
+      
     }else{
       //r.json().then((err) => setErrors(err.errors))
     } 
