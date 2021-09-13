@@ -1,11 +1,13 @@
 import {useHistory} from 'react-router-dom'
 import Header from './Header'
 
-function Home({ user, setUser }){
+function Home({ user, setUser, isLoading }){
 
     const history = useHistory()
+    console.log('in Home above history')
+    console.log(user)
 
-    if (!user){
+    if (!isLoading && !user){
       history.push('/signin')
     }
 
@@ -15,8 +17,6 @@ function Home({ user, setUser }){
             <p>you are home</p>
         </div>
     )
-
 }
-
 
 export default Home
