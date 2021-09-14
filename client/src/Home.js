@@ -18,8 +18,8 @@ function Home({ user, setUser, isLoading }){
         fetch(`/${user.username}/projects`)
         .then(r => r.json())
         .then((projects) => {
-            console.log('useEffect fetch user/projects fired')
-        setUserProjects(projects)
+            setUserProjects(projects)
+            console.log(projects)
         })
         }
     },[user])
