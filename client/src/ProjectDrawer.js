@@ -9,19 +9,19 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from "react"
 
 
-function ProjectDrawer(){
+function ProjectDrawer({ projects, setProjects, setCurrentProject }){
     const [projectsOpen, setProjectsOpen] = useState(false)    
     
     function toggleProjectDrawer(){
         setProjectsOpen(!projectsOpen)
     }
 
-    function showProject(project){
-        console.log(`Showing Project #${project}`)
-    }
-
-    function deleteProject(){
-        console.log("Deleting project # ?")
+    function deleteProject(id){
+        console.log("Deleting project # ", id)
+        fetch(`/projects/${id}`, {method: "DELETE"})
+        .then((r)=>r)
+        .then(setProjects(projects.filter(p=>p.id != id)
+        ))
     }
 
 return (
@@ -31,16 +31,15 @@ return (
         anchor='right' 
         open={projectsOpen} 
         onClose={() => toggleProjectDrawer()}>
-            <div onClick={toggleProjectDrawer}>
+
             <List>
-                {["Project 1", "Project 2", "Project 3", "Project 4"].map((text, index) => (
-                <ListItem button key={text} >
-                    <ListItemText primary={text} onClick={() => showProject(text)}/>
-                    <Button onClick={deleteProject}>{<DeleteForeverIcon />}</Button>
+                {projects.map((project, index) => (
+                <ListItem button key={project.id} >
+                    <ListItemText primary={project.title} onClick={() => setCurrentProject(project)}/>
+                    <Button onClick={() => deleteProject(project.id)}>{<DeleteForeverIcon />}</Button>
                 </ListItem>
                 ))}
             </List>
-            </div>
         </Drawer>
         </>
     )

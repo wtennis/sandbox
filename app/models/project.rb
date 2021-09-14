@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
     belongs_to :user
-    has_many :project_widgets
+    has_many :project_widgets, dependent: :destroy
 
    # has_many :widgetables, :through => :project_widgets
    def widgets

@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 function Home({ user, setUser, isLoading }){
     const [widgetDrawerOpen, setWidgetDrawerOpen] = useState(false)
     const [userProjects, setUserProjects] = useState([])
+    const [currentProject, setCurrentProject] = useState({})
     const history = useHistory()
 
     if (!isLoading && !user){
@@ -15,7 +16,7 @@ function Home({ user, setUser, isLoading }){
 
     useEffect(() => {
         if (user){
-        fetch(`/${user.username}/projects`)
+        fetch(`/projects`)
         .then(r => r.json())
         .then((projects) => {
             setUserProjects(projects)
@@ -31,7 +32,12 @@ function Home({ user, setUser, isLoading }){
     return (
         <div>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
-            <ProjectDrawer />
+            {/*{currentProject ? <GetStarted /> :< ProjectView project={currentProject} />}>} */}
+            <ProjectDrawer 
+                projects={userProjects} 
+                setProjects={setUserProjects}
+                setCurrentProject={setCurrentProject}
+                 />
             <WidgetDrawer isOpen={widgetDrawerOpen} toggleDrawer={toggleWidgetDrawer}/>
             <p>you are home</p>
         </div>
