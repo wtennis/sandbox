@@ -1,3 +1,4 @@
+
 import TextBoxWidget from "./TextBoxWidget"
 import RandomImageWidget from "./RandomImageWidget"
 
@@ -21,8 +22,10 @@ function Sandbox({ project }) {
     return (
         <>
         <p>this is Sandbox</p>
+        <h1 style = {{color: "#3F51B5"}}>This is {currentProject.title}</h1>
         {widgetList}
         </>
+
     )
 }
 
