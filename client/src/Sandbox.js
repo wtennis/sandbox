@@ -4,10 +4,10 @@ import RandomImageWidget from "./RandomImageWidget"
 
 
 
-function Sandbox({ project }) {
+function Sandbox({ currentProject }) {
 
-    console.log(project)
-    const widgets = project.widgets
+    console.log(currentProject)
+    const widgets = currentProject.widgets
 
     const widgetList = widgets.map((widget) => { switch(Object.keys(widget)[0]){
                                                       case "TextBoxWidget":
