@@ -34,10 +34,11 @@ function Home({ user, setUser, isLoading }){
     return (
         <div>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
-            {!currentProject ? <GetStarted setCurrentProject = {setCurrentProject} setUserProjects={setUserProjects}/> :< Sandbox project={currentProject} />}
+            {!currentProject ? <GetStarted setCurrentProject = {setCurrentProject} setUserProjects={setUserProjects}/> :< Sandbox currentProject={currentProject} />}
             <ProjectDrawer 
                 projects={userProjects} 
                 setProjects={setUserProjects}
+                currentProject={currentProject}
                 setCurrentProject={setCurrentProject}
                  />
             <WidgetDrawer isOpen={widgetDrawerOpen} toggleDrawer={toggleWidgetDrawer}/>
