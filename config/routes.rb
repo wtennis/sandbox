@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   
 
-  resources :random_image_widgets
-  resources :text_box_widgets
-  resources :projects
+  # resources :random_image_widgets
+  # resources :text_box_widgets
+
+  get '/:username/projects', to: 'projects#index'
+
+
   post '/signup', to: 'users#create'
   get '/me', to: 'users#show'
 
