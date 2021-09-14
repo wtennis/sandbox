@@ -67,6 +67,8 @@ export default function SignIn({ setUser }) {
       r.json().then((user) => 
        { 
         setUser(user)
+
+        
         history.push('/')
         }
        );
