@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Header({user, setUser}){
+function Header({user, setUser, toggleWidgetDrawer }){
     const classes = useStyles();
     const history = useHistory();
 
@@ -32,15 +32,11 @@ function Header({user, setUser}){
         })
     }
 
-            
-        
-    
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton onClick={ toggleWidgetDrawer } edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
