@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from "react"
 
 
-function ProjectDrawer({ projects, setProjects, setCurrentProject }){
+function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProject }){
     const [projectsOpen, setProjectsOpen] = useState(false)    
     
     function toggleProjectDrawer(){
@@ -18,10 +18,22 @@ function ProjectDrawer({ projects, setProjects, setCurrentProject }){
 
     function deleteProject(id){
         console.log("Deleting project # ", id)
+
+        if (currentProject.id == id){
+            setCurrentProject(null)
+        }
+
         fetch(`/projects/${id}`, {method: "DELETE"})
         .then((r)=>r)
         .then(setProjects(projects.filter(p=>p.id != id)
         ))
+    }
+
+    function handleClick(project){
+        setCurrentProject(project);
+        // fetch data for this project
+        // setCurrentProjectData (pass into this component from Home)
+        // currentProjectData should be passed down to Sandbox to render draggables
     }
 
 return (
@@ -35,7 +47,7 @@ return (
             <List>
                 {projects.map((project, index) => (
                 <ListItem button key={project.id} >
-                    <ListItemText primary={project.title} onClick={() => setCurrentProject(project)}/>
+                    <ListItemText primary={project.title} onClick={() => handleClick(project)}/>
                     <Button onClick={() => deleteProject(project.id)}>{<DeleteForeverIcon />}</Button>
                 </ListItem>
                 ))}

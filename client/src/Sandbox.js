@@ -1,10 +1,9 @@
+import React from 'react'
 
-
-
-function Sandbox() {
+function Sandbox({currentProject}) {
 
     return (
-        <p>this is Sandbox</p>
+        <h1 style = {{color: "#3F51B5"}}>This is {currentProject.title}</h1>
     )
 }
 
