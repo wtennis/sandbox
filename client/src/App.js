@@ -20,6 +20,8 @@ function App() {
           // `/${username}/projects`
           setIsLoading(false)
         })
+      }else{
+        setIsLoading(false)
       }
     })
   }, [])
