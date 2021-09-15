@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
 
-  post '/widgets', to: 'projects#add_widget'
+  post '/widgets', to: 'widgets#create'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
