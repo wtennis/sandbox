@@ -34,7 +34,7 @@ function Home({ user, setUser, isLoading }){
     return (
         <div>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
-            {!currentProject ? <> </> :< Sandbox currentProject={currentProject} />}
+            {!currentProject ? <> </> :<Sandbox currentProject={currentProject} setCurrentProject={setCurrentProject}/>}
             <ProjectDrawer 
                 projects={userProjects} 
                 setProjects={setUserProjects}
