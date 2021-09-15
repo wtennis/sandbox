@@ -3,7 +3,7 @@ import Header from './Header'
 import ProjectDrawer from './ProjectDrawer'
 import WidgetDrawer from './WidgetDrawer'
 import { useState, useEffect } from 'react'
-import GetStarted from './GetStarted'
+import NewProject from './NewProject'
 import Sandbox from './Sandbox'
 
 function Home({ user, setUser, isLoading }){
@@ -34,7 +34,7 @@ function Home({ user, setUser, isLoading }){
     return (
         <div>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
-            {!currentProject ? <GetStarted setCurrentProject = {setCurrentProject} setUserProjects={setUserProjects}/> :< Sandbox currentProject={currentProject} />}
+            {!currentProject ? <> </> :< Sandbox currentProject={currentProject} />}
             <ProjectDrawer 
                 projects={userProjects} 
                 setProjects={setUserProjects}

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -12,9 +11,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Button from '@material-ui/core/Button';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 
-function GetStarted( setCurrentProject, setUserProjects ){
+function NewProject({setCurrentProject, toggleProjectDrawer}){
     const [open, setOpen] = useState(false);
     const [newProject, setNewProject] = useState({
         title: '',
@@ -49,13 +50,35 @@ const classes = useStyles();
 
   const handleClose = () => {
     setOpen(false);
-    console.log(newProject)
+  };
+
+  const handleCreate = () => {
+    console.log(newProject);
+    fetch('/projects', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProject)
+    })
+    .then(r => r.json())
+    .then(r => {
+      setCurrentProject(r);
+      toggleProjectDrawer();
+    })
   };
 
     return (
         <div>
-        <h1 style = {{color: "#3F51B5"}}>Get started</h1>
-        <Button onClick={handleClickOpen}>+</Button>
+          <Button
+          onClick={handleClickOpen}
+          variant="contained"
+          color="primary"
+          endIcon={<AddCircleOutlineIcon />}
+         >
+        New Project
+      </Button>
+
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>New Project</DialogTitle>
           <DialogContent>
@@ -95,7 +118,7 @@ const classes = useStyles();
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleCreate} color="primary">
               Ok
             </Button>
           </DialogActions>
@@ -106,4 +129,4 @@ const classes = useStyles();
 }
 
 
-export default GetStarted;
+export default NewProject;
