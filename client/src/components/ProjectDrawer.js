@@ -2,11 +2,10 @@ import { Drawer } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Button from '@material-ui/core/Button';
-
 import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from "react"
+import NewProject from './NewProject';
 
 
 function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProject }){
@@ -17,7 +16,7 @@ function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProjec
     }
 
     function deleteProject(id){
-        if (currentProject.id == id){
+        if (currentProject && currentProject.id == id){
             setCurrentProject(null)
         }
 
@@ -29,6 +28,7 @@ function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProjec
 
     function handleClick(project){
         setCurrentProject(project);
+        toggleProjectDrawer();
         // fetch data for this project
         // setCurrentProjectData (pass into this component from Home)
         // currentProjectData should be passed down to Sandbox to render draggables
@@ -41,7 +41,7 @@ return (
         anchor='right' 
         open={projectsOpen} 
         onClose={() => toggleProjectDrawer()}>
-
+            <NewProject/>
             <List>
                 {projects.map((project, index) => (
                 <ListItem button key={project.id} >
