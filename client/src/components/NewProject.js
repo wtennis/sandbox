@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -13,8 +12,11 @@ import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
+import Button from '@material-ui/core/Button';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-function GetStarted( setCurrentProject, setUserProjects ){
+
+function NewProject(){
     const [open, setOpen] = useState(false);
     const [newProject, setNewProject] = useState({
         title: '',
@@ -54,8 +56,15 @@ const classes = useStyles();
 
     return (
         <div>
-        <h1 style = {{color: "#3F51B5"}}>Get started</h1>
-        <Button onClick={handleClickOpen}>+</Button>
+          <Button
+          onClick={handleClickOpen}
+          variant="contained"
+          color="primary"
+          endIcon={<AddCircleOutlineIcon />}
+         >
+        New Project
+      </Button>
+
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle>New Project</DialogTitle>
           <DialogContent>
@@ -106,4 +115,4 @@ const classes = useStyles();
 }
 
 
-export default GetStarted;
+export default NewProject;
