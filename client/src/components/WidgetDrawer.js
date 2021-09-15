@@ -25,10 +25,13 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject})
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({project_id: currentProject.id, widget: widget})
         }).then(res => res.json())
-        .then(console.log)
+        .then((newWidget) =>{
+            console.log("NewWidget", newWidget)
+            currentProject.widgets.push(newWidget)
+            setCurrentProject({...currentProject})
+        })
 
-        currentProject.widgets.push(widget)
-        setCurrentProject(currentProject)
+        
 
     }
 
