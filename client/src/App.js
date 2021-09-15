@@ -16,8 +16,6 @@ function App() {
       if(r.ok){
         r.json().then((user)=>{
           setUser(user)
-
-          // `/${username}/projects`
           setIsLoading(false)
         })
       }else{

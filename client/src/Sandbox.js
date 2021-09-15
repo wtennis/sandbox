@@ -9,11 +9,11 @@ function Sandbox({ currentProject }) {
     console.log(currentProject)
     const widgets = currentProject.widgets
 
-    const widgetList = widgets.map((widget) => { switch(Object.keys(widget)[0]){
+    const widgetList = widgets.map((widget, index) => { switch(Object.keys(widget)[0]){
                                                       case "TextBoxWidget":
-                                                            return <TextBoxWidget data={widget.TextBoxWidget.text}/>
+                                                            return <TextBoxWidget key={ index } data={widget.TextBoxWidget.text}/>
                                                        case "RandomImageWidget":
-                                                             return <RandomImageWidget image_url={widget.RandomImageWidget.image_url } />                                     
+                                                             return <RandomImageWidget key={ index } image_url={widget.RandomImageWidget.image_url } />                                     
     } } )
  
     console.log(widgetList)

@@ -41,7 +41,12 @@ function Home({ user, setUser, isLoading }){
                 currentProject={currentProject}
                 setCurrentProject={setCurrentProject}
                  />
-            <WidgetDrawer isOpen={widgetDrawerOpen} toggleDrawer={toggleWidgetDrawer}/>
+            <WidgetDrawer 
+                isOpen={widgetDrawerOpen} 
+                toggleDrawer={toggleWidgetDrawer}
+                currentProject={currentProject}
+                setCurrentProject={setCurrentProject}    
+                />
             <p>you are home</p>
         </div>
     )
