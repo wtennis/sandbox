@@ -15,4 +15,21 @@ class WidgetsController < ApplicationController
         end
         render json: widgetable, status: :created
     end
+
+
+    def destroy
+        case params[:type]
+        when "TextBoxWidget"
+            widget = TextBoxWidget.find_by(id: params[:id])
+            project_widget = ProjectWidget.where(widgetable_id: params[:id], widgetable_type: "TextBoxWidget")
+        when "RandomImageWidget"
+            widget = RandomImageWidget.find_by(id: params[:id])
+            project_widget = ProjectWidget.where(widgetable_id: params[:id], widgetable_type: "RandomImageWidget")
+        end
+        project_widget[0].destroy
+        widget.destroy
+        
+        head :no_content
+    end
+
 end

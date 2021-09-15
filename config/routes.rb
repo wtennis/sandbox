@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
 
   post '/widgets', to: 'widgets#create'
+  delete '/widgets/:id', to: 'widgets#destroy'
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
