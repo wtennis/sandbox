@@ -10,15 +10,13 @@ import { useState } from "react"
 
 
 function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProject }){
-    const [projectsOpen, setProjectsOpen] = useState(false)    
+    const [projectsOpen, setProjectsOpen] = useState(true)    
     
     function toggleProjectDrawer(){
         setProjectsOpen(!projectsOpen)
     }
 
     function deleteProject(id){
-        console.log("Deleting project # ", id)
-
         if (currentProject.id == id){
             setCurrentProject(null)
         }
