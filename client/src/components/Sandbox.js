@@ -5,6 +5,7 @@ import { Card } from '@material-ui/core'
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 
 
 
@@ -34,14 +35,16 @@ function Sandbox({ currentProject }) {
         <h1 style = {{color: "#3F51B5"}}>This is {currentProject.title}</h1>
         {widgetList.map((widget) => { 
             return (
-                <Card raised>
-                    <CardContent>
-                        {widget}
-                        <CardActions>
-                            <Button onClick={()=> removeWidget(widget.props.widget_id, widget.props.widget_type)}> Remove from Project</Button>
-                        </CardActions>
-                    </CardContent>
-                </Card>
+                <Draggable>
+                    <Card raised>
+                        <CardContent>
+                            {widget}
+                            <CardActions>
+                                <Button onClick={()=> removeWidget(widget.props.widget_id, widget.props.widget_type)}> Remove from Project</Button>
+                            </CardActions>
+                        </CardContent>
+                    </Card>
+                </Draggable>
                    )
         })}
         </>
