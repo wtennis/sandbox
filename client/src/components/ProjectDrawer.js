@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from "react"
 import NewProject from './NewProject';
 
+import Box from '@material-ui/core/Box';
 
 function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProject }){
     const [projectsOpen, setProjectsOpen] = useState(true)    
@@ -41,7 +42,9 @@ return (
         anchor='right' 
         open={projectsOpen} 
         onClose={() => toggleProjectDrawer()}>
-            <NewProject/>
+            <Box mx="auto" m={2}>
+             <NewProject/>
+            </Box>
             <List>
                 {projects.map((project, index) => (
                 <ListItem button key={project.id} >
