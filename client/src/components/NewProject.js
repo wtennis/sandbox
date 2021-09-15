@@ -11,12 +11,11 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-
 import Button from '@material-ui/core/Button';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 
-function NewProject(){
+function NewProject({setCurrentProject, toggleProjectDrawer}){
     const [open, setOpen] = useState(false);
     const [newProject, setNewProject] = useState({
         title: '',
@@ -51,7 +50,22 @@ const classes = useStyles();
 
   const handleClose = () => {
     setOpen(false);
-    console.log(newProject)
+  };
+
+  const handleCreate = () => {
+    console.log(newProject);
+    fetch('/projects', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProject)
+    })
+    .then(r => r.json())
+    .then(r => {
+      setCurrentProject(r);
+      toggleProjectDrawer();
+    })
   };
 
     return (
@@ -104,7 +118,7 @@ const classes = useStyles();
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={handleCreate} color="primary">
               Ok
             </Button>
           </DialogActions>

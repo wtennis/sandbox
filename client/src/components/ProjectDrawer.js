@@ -43,7 +43,7 @@ return (
         open={projectsOpen} 
         onClose={() => toggleProjectDrawer()}>
             <Box mx="auto" m={2}>
-             <NewProject/>
+             <NewProject setCurrentProject={setCurrentProject} toggleProjectDrawer={toggleProjectDrawer}/>
             </Box>
             <List>
                 {projects.map((project, index) => (
