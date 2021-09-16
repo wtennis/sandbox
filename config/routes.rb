@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  # resources :rhymify_widgets
   resources :random_image_widgets, only: :update
   resources :text_box_widgets, only: [:update, :destroy]
   resources :projects, except: [:show]

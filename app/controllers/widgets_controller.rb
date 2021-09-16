@@ -14,6 +14,10 @@ class WidgetsController < ApplicationController
             widgetable = RandomImageWidget.create(image_url: params[:widget][widget_type]['image_url'])
             project_widget = ProjectWidget.create(project_id: params[:project_id], widgetable_id: widgetable.id, widgetable_type: "RandomImageWidget")
             widgetable = {"RandomImageWidget" => widgetable}
+        when "RhymifyWidget"
+            widgetable = RhymifyWidget.create(input_word: "orange")
+            project_widget = ProjectWidget.create(project_id: params[:project_id], widgetable_id: widgetable.id, widgetable_type: "RhymifyWidget")
+            widgetable = {"RhymifyWidget" => widgetable}
         end
         render json: widgetable, status: :created
     end
@@ -27,6 +31,9 @@ class WidgetsController < ApplicationController
         when "RandomImageWidget"
             widget = RandomImageWidget.find_by(id: params[:id])
             project_widget = ProjectWidget.where(widgetable_id: params[:id], widgetable_type: "RandomImageWidget")
+        when "RhymifyWidget"
+            widget = RhymifyWidget.find_by(id: params[:id])
+            project_widget = ProjectWidget.where(widgetable_id: params[:id], widgetable_type: "RhymifyWidget")
         end
         project_widget[0].destroy
         widget.destroy
