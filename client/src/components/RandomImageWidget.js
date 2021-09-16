@@ -17,7 +17,7 @@ function RandomImageWidget ({ widget, currentProject, setCurrentProject }){
     let image_url= widget.RandomImageWidget.image_url
     return (
         <>
-            <img src={image_url} width ="250px"></img>
+            <img src={image_url} width ="100%"></img>
             <Button color="primary" startIcon={<ImageIcon />} onClick={newImage}>new image</Button>
         </>
     )
