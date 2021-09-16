@@ -39,8 +39,11 @@ function Sandbox({ currentProject, setCurrentProject }) {
 
     return (
         <>
-        <p>this is Sandbox</p>
         <h1 style = {{color: "#3F51B5"}}>This is {currentProject.title}</h1>
+        <div>
+            
+
+        </div>
         <Grid container spacing={3} justifyContent="center" alignItems="center">
         {widgetList.map((widget) => { 
             return (
