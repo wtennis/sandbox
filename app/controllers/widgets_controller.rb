@@ -9,9 +9,11 @@ class WidgetsController < ApplicationController
         when "TextBoxWidget"
             widgetable = TextBoxWidget.create(text: params[:widget][widget_type]['text'])
             project_widget = ProjectWidget.create(project_id: params[:project_id], widgetable_id: widgetable.id, widgetable_type: "TextBoxWidget")
+            widgetable = {"TextBoxWidget" => widgetable}
         when "RandomImageWidget"
             widgetable = RandomImageWidget.create(image_url: params[:widget][widget_type]['image_url'])
             project_widget = ProjectWidget.create(project_id: params[:project_id], widgetable_id: widgetable.id, widgetable_type: "RandomImageWidget")
+            widgetable = {"RandomImageWidget" => widgetable}
         end
         render json: widgetable, status: :created
     end
