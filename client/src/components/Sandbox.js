@@ -61,6 +61,7 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                                                                         widget={widget} 
                                                                                         widget_id={widget.RhymifyWidget.id} 
                                                                                         widget_type={"RhymifyWidget"}
+                                                                                        input_word={widget.RhymifyWidget.input_word}
                                                                                         color="#F9F871"
                                                                                         />                                      
     } } )
