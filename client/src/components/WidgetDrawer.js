@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject}){
     
-    function addWidgetToProject(widgetName){
+   async function addWidgetToProject(widgetName){
         console.log(`adding widget ${widgetName}`)
         let widget = {}
         switch(widgetName){
@@ -15,8 +15,9 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject})
                 widget = {TextBoxWidget: {text: "..."}}
                 break
             case "Random Image":
-                //Fetch Random Image
-                widget = {RandomImageWidget: {image_url: "https://i.imgur.com/2bvab7y.jpeg"}}
+                let response = await fetch("https://picsum.photos/300")
+                widget = {RandomImageWidget: {image_url: response.url
+                }}
                 break
         }
 
@@ -30,7 +31,6 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject})
             setCurrentProject({...currentProject})
         })
 
-        
 
     }
 
@@ -51,3 +51,5 @@ return (
 }
 
 export default WidgetDrawer
+
+
