@@ -5,6 +5,7 @@ import { Card } from '@material-ui/core'
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import Grid from '@material-ui/core/Grid';
 
@@ -51,7 +52,15 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                 <CardContent>
                                     {widget}
                                     <CardActions>
-                                        <Button onClick={()=> removeWidget(widget.props.widget_id, widget.props.widget_type)}> Remove from Project</Button>
+                                        <Button
+                                            variant="contained"
+                                            onClick={()=> removeWidget(widget.props.widget_id, widget.props.widget_type)}
+                                            color="secondary"
+                                            size="small"
+                                            startIcon={<DeleteIcon />}
+                                            >
+                                            Delete
+                                        </Button>
                                     </CardActions>
                                 </CardContent>
                             </Card>
