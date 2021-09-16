@@ -6,10 +6,6 @@ class TextBoxWidgetsController < ApplicationController
         render json: text_box_widget
     end
 
-    def destroy
-
-    end
-
     private
 
     def text_box_widget_params

@@ -51,6 +51,7 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                                        case "RandomImageWidget":
                                                              return <RandomImageWidget key={ index } 
                                                                                         widget={widget} 
+                                                                                        widget_id={widget.RandomImageWidget.id} 
                                                                                         currentProject={currentProject}
                                                                                         setCurrentProject={setCurrentProject} 
                                                                                         widget_type={"RandomImageWidget"}
