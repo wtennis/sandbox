@@ -11,7 +11,8 @@ import Box from '@material-ui/core/Box';
 function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, projects, setProjects}){
     
    async function addWidgetToProject(widgetName){
-        console.log(`adding widget ${widgetName}`)
+        if(currentProject){   
+    console.log(`adding widget ${widgetName}`)
         let widget = {}
         switch(widgetName){
             case "Text Box":
@@ -21,6 +22,7 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
                 let response = await fetch("https://picsum.photos/300")
                 widget = {RandomImageWidget: {image_url: response.url
                 }}
+                break
             case "Rhymify":
                 widget = {RhymifyWidget: {input_word: "orange"}}
                 break
@@ -35,6 +37,9 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
             currentProject.widgets.push(newWidget)
             setCurrentProject({...currentProject})
         })
+    }else{
+        alert("Please start or select a project")
+    }
     }
 
     //Things for the project portion of the drawer
