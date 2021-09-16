@@ -73,9 +73,8 @@ return (
             <List>
                 {projects.map((project, index) => (
                 <ListItem button key={project.id} >
-                    <ListItemText primary={project.title} onClick={() => handleClick(project)}/>
-
                     <Button onClick={() => deleteProject(project.id)}>{<DeleteForeverIcon />}</Button>
+                    <ListItemText primary={project.title} onClick={() => handleClick(project)}/>
                 </ListItem>
                 ))}
             </List>

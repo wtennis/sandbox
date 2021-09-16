@@ -7,7 +7,7 @@ import NewProject from './NewProject'
 import Sandbox from './Sandbox'
 
 function Home({ user, setUser, isLoading }){
-    const [widgetDrawerOpen, setWidgetDrawerOpen] = useState(false)
+    const [widgetDrawerOpen, setWidgetDrawerOpen] = useState(true)
     const [userProjects, setUserProjects] = useState([])
     const [currentProject, setCurrentProject] = useState(null)
     const history = useHistory()
