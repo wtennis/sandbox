@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import Grid from '@material-ui/core/Grid';
+import ProjectHeader from "./ProjectHeader";
 
 function Sandbox({ currentProject, setCurrentProject }) {
 
@@ -39,8 +40,10 @@ function Sandbox({ currentProject, setCurrentProject }) {
 
     return (
         <>
-        <p>this is Sandbox</p>
-        <h1 style = {{color: "#3F51B5"}}>This is {currentProject.title}</h1>
+            <div>
+                 <ProjectHeader title={currentProject.title} description={currentProject.description} category={currentProject.category}/>
+            </div>
+
         <Grid container spacing={3} justifyContent="center" alignItems="center">
         {widgetList.map((widget) => { 
             return (
