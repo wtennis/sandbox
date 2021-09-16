@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useState } from "react"
 import NewProject from './NewProject';
-
 import Box from '@material-ui/core/Box';
 
 function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProject }){

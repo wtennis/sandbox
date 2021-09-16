@@ -10,18 +10,24 @@ import Draggable, {DraggableCore} from 'react-draggable';
 import Grid from '@material-ui/core/Grid';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProjectHeader from "./ProjectHeader";
-
 import { CardHeader } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
+import { makeStyles } from '@material-ui/core/styles';
 
 
-
+const useStyles = makeStyles({
+    card: {
+      margin: 20,
+    },
+  });
 
 
 function Sandbox({ currentProject, setCurrentProject }) {
+
+    const classes = useStyles()
 
     function removeWidget(id, type){
         fetch(`/widgets/${id}`, {method: 'DELETE', 
@@ -85,13 +91,13 @@ function Sandbox({ currentProject, setCurrentProject }) {
                  <ProjectHeader currentProject={currentProject} setCurrentProject={setCurrentProject}/>
             </div>
             
-        <Grid container spacing={3} justifyContent="center" alignItems="center">
+        <Grid container spacing={1} justifyContent="center" alignItems="center">
         {widgetList.map((widget, index) => { 
             return (
                 
-                    <Grid item xs={3} key={index}>
+                    <Grid item xs={4} sm={3} lg={2} key={index}>
                         <Draggable cancel="strong">
-                            <Card raised>
+                            <Card raised className={classes.card}>
                             <CardHeader
                                     style={{ backgroundColor: widget.props.color }}
                                     avatar={
