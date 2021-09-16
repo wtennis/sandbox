@@ -84,11 +84,11 @@ function Sandbox({ currentProject, setCurrentProject }) {
                  <ProjectHeader currentProject={currentProject} setCurrentProject={setCurrentProject}/>
             </div>
             
-        <Grid container spacing={3} justifyContent="center" alignItems="center">
+        <Grid container spacing={5} justifyContent="center" alignItems="center">
         {widgetList.map((widget, index) => { 
             return (
                 
-                    <Grid item xs={3} key={index}>
+                    <Grid item xs={4} sm={3} lg={2} key={index}>
                         <Draggable cancel="strong">
                             <Card raised>
                             <CardHeader
