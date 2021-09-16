@@ -7,9 +7,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 
-
-
-
 function Sandbox({ currentProject }) {
 
 

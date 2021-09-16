@@ -12,7 +12,7 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject})
         let widget = {}
         switch(widgetName){
             case "Text Box":
-                widget = {TextBoxWidget: {text: "This is an empty string"}}
+                widget = {TextBoxWidget: {text: "..."}}
                 break
             case "Random Image":
                 //Fetch Random Image

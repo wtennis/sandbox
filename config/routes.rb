@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   
 
   # resources :random_image_widgets
-  # resources :text_box_widgets
-
+  resources :text_box_widgets, only: [:update, :destroy]
   resources :projects, except: [:update, :show]
 
   #get '/:username/projects', to: 'projects#index'
