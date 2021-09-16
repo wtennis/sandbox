@@ -18,6 +18,8 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject})
                 let response = await fetch("https://picsum.photos/300")
                 widget = {RandomImageWidget: {image_url: response.url
                 }}
+            case "Rhymify":
+                widget = {RhymifyWidget: {input_word: "orange"}}
                 break
         }
 
@@ -30,8 +32,6 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject})
             currentProject.widgets.push(newWidget)
             setCurrentProject({...currentProject})
         })
-
-
     }
 
 return (
@@ -39,7 +39,7 @@ return (
         <Drawer variant='temporary' anchor='left' open={isOpen} onClose={toggleDrawer}>
             {/* Typography Widgets! */}
             <List>
-                {["Text Box", "Random Image", "Widget 3", "Widget 4"].map((text, index) => (
+                {["Text Box", "Random Image", "Rhymify", "Widget 4"].map((text, index) => (
                 <ListItem button key={text} >
                     <ListItemText primary={text} onClick={() => addWidgetToProject(text)}/>
                 </ListItem>

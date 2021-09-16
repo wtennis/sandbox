@@ -18,8 +18,10 @@ pw2 = ProjectWidget.create(project_id: project1.id, widgetable_id: widget2.id, w
 project2 = Project.create(title: "Poetic Poem", user_id: user1.id, description: "artsy fartsy poetry")
 widget3 = RandomImageWidget.create(image_url: "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y3V0ZSUyMGNhdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80")
 widget4 = TextBoxWidget.create(text: "Not sure what to put in this poem...")
+widget5 = RhymifyWidget.create(input_word: "orange")
 pw3 = ProjectWidget.create(project_id: project2.id, widgetable_id: widget3.id, widgetable_type: "RandomImageWidget")
 pw4 = ProjectWidget.create(project_id: project2.id, widgetable_id: widget4.id, widgetable_type: "TextBoxWidget")
+pw5 = ProjectWidget.create(project_id: project2.id, widgetable_id: widget5.id, widgetable_type: "RhymifyWidget")
 
 
 puts '✅ Seeding done ✅'

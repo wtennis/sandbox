@@ -1,19 +1,18 @@
 
 import TextBoxWidget from "./TextBoxWidget"
 import RandomImageWidget from "./RandomImageWidget"
+import RhymifyWidget from "./RhymifyWidget"
 import { Card } from '@material-ui/core'
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
+import Draggable, {DraggableCore} from 'react-draggable';
 import Grid from '@material-ui/core/Grid';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ProjectHeader from "./ProjectHeader";
 
 import { CardHeader } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
-import { IconButton } from "@material-ui/core";
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
@@ -51,11 +50,19 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                                        case "RandomImageWidget":
                                                              return <RandomImageWidget key={ index } 
                                                                                         widget={widget} 
+                                                                                        widget_id={widget.RandomImageWidget.id} 
                                                                                         currentProject={currentProject}
                                                                                         setCurrentProject={setCurrentProject} 
                                                                                         widget_type={"RandomImageWidget"}
                                                                                         color="#F65D91"
-                                                                                        />                                     
+                                                                                        /> 
+                                                        case "RhymifyWidget":
+                                                             return <RhymifyWidget key={ index } 
+                                                                                        widget={widget} 
+                                                                                        widget_id={widget.RhymifyWidget.id} 
+                                                                                        widget_type={"RhymifyWidget"}
+                                                                                        color="#F9F871"
+                                                                                        />                                      
     } } )
  
     console.log(widgetList)

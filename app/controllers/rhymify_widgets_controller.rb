@@ -1,0 +1,2 @@
+class RhymifyWidgetsController < ApplicationController
+end
