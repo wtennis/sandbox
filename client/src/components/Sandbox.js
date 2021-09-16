@@ -8,10 +8,7 @@ import Button from '@material-ui/core/Button';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import Grid from '@material-ui/core/Grid';
 
-
-
 function Sandbox({ currentProject, setCurrentProject }) {
-
 
     function removeWidget(id, type){
         fetch(`/widgets/${id}`, {method: 'DELETE', 

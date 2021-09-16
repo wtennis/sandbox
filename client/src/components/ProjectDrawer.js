@@ -29,6 +29,7 @@ function ProjectDrawer({ projects, setProjects, currentProject, setCurrentProjec
 
     function handleClick(project){
         setCurrentProject(project);
+        console.log(currentProject)
         toggleProjectDrawer();
         // fetch data for this project
         // setCurrentProjectData (pass into this component from Home)
