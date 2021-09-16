@@ -31,7 +31,10 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                                       case "TextBoxWidget":
                                                             return <TextBoxWidget key={ index } data={widget.TextBoxWidget.text} widget_id={widget.TextBoxWidget.id} widget_type={"TextBoxWidget"}/>
                                                        case "RandomImageWidget":
-                                                             return <RandomImageWidget key={ index } image_url={widget.RandomImageWidget.image_url} widget_id={widget.RandomImageWidget.id} widget_type={"RandomImageWidget"} />                                     
+                                                             return <RandomImageWidget key={ index } 
+                                                                                        widget={widget} 
+                                                                                        currentProject={currentProject}
+                                                                                        setCurrentProject={setCurrentProject} />                                     
     } } )
  
     console.log(widgetList)
@@ -42,10 +45,10 @@ function Sandbox({ currentProject, setCurrentProject }) {
         <p>this is Sandbox</p>
         <h1 style = {{color: "#3F51B5"}}>This is {currentProject.title}</h1>
         <Grid container spacing={3} justifyContent="center" alignItems="center">
-        {widgetList.map((widget) => { 
+        {widgetList.map((widget, index) => { 
             return (
                 
-                    <Grid item xs={3}>
+                    <Grid item xs={3} key={index}>
                         <Draggable>
                             <Card raised>
                                 <CardContent>
