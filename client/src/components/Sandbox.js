@@ -74,7 +74,12 @@ function Sandbox({ currentProject, setCurrentProject }) {
     return (
         <>
             <div>
-                 <ProjectHeader title={currentProject.title} description={currentProject.description} category={currentProject.category}/>
+                 <ProjectHeader
+                 id={currentProject.id} 
+                 title={currentProject.title} 
+                 description={currentProject.description} 
+                 category={currentProject.category}
+                 />
             </div>
 
         <Grid container spacing={3} justifyContent="center" alignItems="center">
