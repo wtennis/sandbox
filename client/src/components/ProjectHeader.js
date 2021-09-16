@@ -8,20 +8,29 @@ import CheckIcon from '@material-ui/icons/Check';
 
 
 
-function ProjectHeader({ title, description, category }){
+function ProjectHeader({ title, description, category, id }){
     const [editState, setEditState] = useState(false)
     const [revealEditButton, setRevealEditButton] = useState(false)
 
 
     const [titleState, setTitleState] = useState(title)
     const [descriptionState, setDescriptionState] = useState(description)
+    const [categoryState, setCategoryState] = useState(category)
 
-    function handleSave(){
-        console.log('save clicked')
+    function updateProjectDetails(){
         setEditState(false)
-        // fetch POST to project (lift out?)
+
+        fetch(`/projects/${id}`, 
+            {method: "PATCH", 
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                title: titleState,
+                description: descriptionState,
+                category: categoryState
+            })
+            }).then(res => res.json())
+            .then(console.log)
     }
-    
 
 
     return (
@@ -35,7 +44,7 @@ function ProjectHeader({ title, description, category }){
                                 <div>
                                     <TextField onChange={(e)=> setTitleState(e.target.value)}value={titleState}id="standard-basic" label="Title" />
                                     <TextareaAutosize onChange={(e)=> setDescriptionState(e.target.value)}value={descriptionState} aria-label="minimum height" minRows={3} placeholder="Description" />
-                                    <Button onClick={handleSave}>{<CheckIcon />}</Button>
+                                    <Button onClick={updateProjectDetails}>{<CheckIcon />}</Button>
                                 </div>
                             : 
                                 <div>

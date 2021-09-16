@@ -17,6 +17,12 @@ class ProjectsController < ApplicationController
         render json: project, status: :created
     end
 
+    def update
+        project = Project.find_by(id: params[:id])
+        project.update!(project_params)
+        render json: project
+    end
+
     private
     def project_params
         params.permit(:title, :description, :category, :is_public)
