@@ -8,14 +8,10 @@ import CheckIcon from '@material-ui/icons/Check';
 
 
 
-function ProjectHeader({ title, description, category, id }){
+function ProjectHeader({ currentProject, setCurrentProject }){
+    const { title, description, category, id } = currentProject
     const [editState, setEditState] = useState(false)
     const [revealEditButton, setRevealEditButton] = useState(false)
-
-
-    const [titleState, setTitleState] = useState(title)
-    const [descriptionState, setDescriptionState] = useState(description)
-    const [categoryState, setCategoryState] = useState(category)
 
     function updateProjectDetails(){
         setEditState(false)
@@ -23,13 +19,16 @@ function ProjectHeader({ title, description, category, id }){
         fetch(`/projects/${id}`, 
             {method: "PATCH", 
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                title: titleState,
-                description: descriptionState,
-                category: categoryState
-            })
+            body: JSON.stringify(currentProject)
             }).then(res => res.json())
-            .then(console.log)
+            .then(setCurrentProject)
+    }
+
+    const handleChange = (e) => {
+        setCurrentProject({
+            ...currentProject,
+            [e.target.name]: e.target.value
+        });
     }
 
 
@@ -42,14 +41,14 @@ function ProjectHeader({ title, description, category, id }){
                 <form>
                         {editState? 
                                 <div>
-                                    <TextField onChange={(e)=> setTitleState(e.target.value)}value={titleState}id="standard-basic" label="Title" />
-                                    <TextareaAutosize onChange={(e)=> setDescriptionState(e.target.value)}value={descriptionState} aria-label="minimum height" minRows={3} placeholder="Description" />
+                                    <TextField name= "title" onChange={handleChange}value={title}id="standard-basic" label="Title" />
+                                    <TextareaAutosize name="description" onChange={handleChange}value={description} aria-label="minimum height" minRows={3} placeholder="Description" />
                                     <Button onClick={updateProjectDetails}>{<CheckIcon />}</Button>
                                 </div>
                             : 
                                 <div>
-                                    <h3>{titleState}</h3>
-                                    <p>{descriptionState}</p>
+                                    <h3>{title}</h3>
+                                    <p>{description}</p>
                                 </div>
                             }
                 </form>
