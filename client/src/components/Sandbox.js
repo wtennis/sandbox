@@ -5,10 +5,22 @@ import { Card } from '@material-ui/core'
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Draggable, {DraggableCore} from 'react-draggable'; // Both at the same time
 import Grid from '@material-ui/core/Grid';
+import DeleteIcon from '@material-ui/icons/Delete';
 import ProjectHeader from "./ProjectHeader";
+
+import { CardHeader } from "@material-ui/core";
+import { Avatar } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ImageIcon from '@material-ui/icons/Image';
+import TextFieldsIcon from '@material-ui/icons/TextFields';
+import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
+
+
+
+
 
 function Sandbox({ currentProject, setCurrentProject }) {
 
@@ -30,16 +42,34 @@ function Sandbox({ currentProject, setCurrentProject }) {
     const widgets = currentProject.widgets
     const widgetList = widgets.map((widget, index) => { switch(Object.keys(widget)[0]){
                                                       case "TextBoxWidget":
-                                                            return <TextBoxWidget key={ index } data={widget.TextBoxWidget.text} widget_id={widget.TextBoxWidget.id} widget_type={"TextBoxWidget"}/>
+                                                            return <TextBoxWidget   key={ index } 
+                                                                                    data={widget.TextBoxWidget.text} 
+                                                                                    widget_id={widget.TextBoxWidget.id} 
+                                                                                    widget_type={"TextBoxWidget"}
+                                                                                    color= "#05A985"
+                                                                                    />
                                                        case "RandomImageWidget":
                                                              return <RandomImageWidget key={ index } 
                                                                                         widget={widget} 
                                                                                         currentProject={currentProject}
-                                                                                        setCurrentProject={setCurrentProject} />                                     
+                                                                                        setCurrentProject={setCurrentProject} 
+                                                                                        widget_type={"RandomImageWidget"}
+                                                                                        color="#F65D91"
+                                                                                        />                                     
     } } )
  
     console.log(widgetList)
 
+    function renderWidgetIcon(param) {
+        switch(param) {
+          case 'RandomImageWidget':
+            return <ImageIcon></ImageIcon>;
+            case 'TextBoxWidget':
+            return <TextFieldsIcon></TextFieldsIcon>;
+          default:
+            return <AllInclusiveIcon></AllInclusiveIcon>;
+        }
+      }
 
     return (
         <>
@@ -54,6 +84,20 @@ function Sandbox({ currentProject, setCurrentProject }) {
                     <Grid item xs={3} key={index}>
                         <Draggable>
                             <Card raised>
+                            <CardHeader
+                                    style={{ backgroundColor: widget.props.color }}
+                                    avatar={
+                                    <Avatar style={{ backgroundColor: "#3F51B5" }} aria-label="recipe">
+                                        {renderWidgetIcon(widget.props.widget_type)}
+                                    </Avatar>
+                                    }
+                                    action={
+                                    <IconButton aria-label="settings">
+                                        <MoreVertIcon />
+                                    </IconButton>
+                                    }
+                                />
+
                                 <CardContent>
                                     {widget}
                                     <CardActions>
