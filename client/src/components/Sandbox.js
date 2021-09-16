@@ -16,9 +16,8 @@ function Sandbox({ currentProject, setCurrentProject }) {
         headers: {"Content-Type": "application/json"}, 
         body: JSON.stringify({type: type})})
         console.log(id, type)
-        currentProject.widgets = currentProject.widgets.filter((w) => { console.log(w[Object.keys(w)[0]].id, Object.keys(w)[0])
+        currentProject.widgets = currentProject.widgets.filter((w) => {
                                                                         if(w[Object.keys(w)[0]].id == id && type == Object.keys(w)[0]){
-                                                                            console.log("return false")
                                                                             return false
                                                                         }
                                                                             return true
