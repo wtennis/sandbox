@@ -26,8 +26,6 @@ function ProjectHeader({ title, description, category }){
 
     return (
         <>
-       
-
         <div onMouseEnter={()=> setRevealEditButton(true)}>
 
             {revealEditButton? <Button onClick={() => setEditState(true)}>{<EditIcon />}</Button> : null}
