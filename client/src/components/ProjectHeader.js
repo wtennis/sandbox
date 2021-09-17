@@ -41,6 +41,7 @@ function ProjectHeader({ currentProject, setCurrentProject }){
             width: "40%", 
             margin:"0 auto",
             marginTop: "20px",
+            marginBottom: "20px",
             borderRadius: 10,
             border: "1px solid #B34FAE",
             boxShadow: "1px 3px 1px #B34FAE"
