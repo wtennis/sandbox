@@ -1,23 +1,17 @@
 
-import TextBoxWidget from "./TextBoxWidget"
-import RandomImageWidget from "./RandomImageWidget"
-import RhymifyWidget from "./RhymifyWidget"
-import WordAssociatorWidget from "./WordAssociatorWidget"
-import { Card } from '@material-ui/core'
-import CardContent from '@material-ui/core/CardContent';
-import Draggable, {DraggableCore} from 'react-draggable';
-import Grid from '@material-ui/core/Grid';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { IconButton } from "@material-ui/core";
 import ProjectHeader from "./ProjectHeader";
-import { CardHeader } from "@material-ui/core";
-import { Avatar } from "@material-ui/core";
+import TextBoxWidget from "./widgets/TextBoxWidget"
+import RandomImageWidget from "./widgets/RandomImageWidget"
+import RhymifyWidget from "./widgets/RhymifyWidget"
+import WordAssociatorWidget from "./widgets/WordAssociatorWidget"
+import { Card, CardHeader, CardContent, Avatar, IconButton, Grid } from '@material-ui/core'
+import Draggable from 'react-draggable';
+import DeleteIcon from '@material-ui/icons/Delete';
 import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import HearingIcon from '@material-ui/icons/Hearing';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
-import { makeStyles } from '@material-ui/core/styles';
 
 
 

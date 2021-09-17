@@ -1,9 +1,7 @@
 import {useHistory} from 'react-router-dom'
 import Header from './Header'
-import ProjectDrawer from './ProjectDrawer'
 import WidgetDrawer from './WidgetDrawer'
 import { useState, useEffect } from 'react'
-import NewProject from './NewProject'
 import Sandbox from './Sandbox'
 
 function Home({ user, setUser, isLoading }){
@@ -32,7 +30,7 @@ function Home({ user, setUser, isLoading }){
     }
 
     return (
-        <div style = {{background: "rgb(246,93,145)", background: "linear-gradient(232deg, rgba(246,93,145,1) 0%, rgba(255,192,92,1) 100%)", height: "100%"}}>
+        <div>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
             {!currentProject ? <> </> :<Sandbox currentProject={currentProject} setCurrentProject={setCurrentProject}/>}
             <WidgetDrawer 
