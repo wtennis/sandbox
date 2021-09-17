@@ -26,6 +26,9 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
             case "Rhymify":
                 widget = {RhymifyWidget: {input_word: "orange"}}
                 break
+            case "Word Associator":
+                widget = {WordAssociatorWidget: {input_word: "iceberg"}}
+                break
         }
 
         fetch("/widgets", 
@@ -63,9 +66,8 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
 return (
        <> 
         <Drawer variant='temporary' anchor='left' open={isOpen} onClose={toggleDrawer}>
-            {/* Typography Widgets! */}
             <List>
-                {["Text Box", "Random Image", "Rhymify", "Widget 4"].map((text, index) => (
+                {["Text Box", "Random Image", "Rhymify", "Word Associator"].map((text, index) => (
                 <ListItem button key={text} >
                     <ListItemText primary={text} onClick={() => addWidgetToProject(text)}/>
                 </ListItem>
