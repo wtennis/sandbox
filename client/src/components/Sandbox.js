@@ -15,6 +15,7 @@ import { CardHeader } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
+import HearingIcon from '@material-ui/icons/Hearing';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -77,11 +78,13 @@ function Sandbox({ currentProject, setCurrentProject }) {
 
     function renderWidgetIcon(param) {
         switch(param) {
-          case 'RandomImageWidget':
+        case 'RandomImageWidget':
             return <ImageIcon></ImageIcon>;
-            case 'TextBoxWidget':
+        case 'TextBoxWidget':
             return <TextFieldsIcon></TextFieldsIcon>;
-          default:
+         case 'RhymifyWidget':
+            return <HearingIcon></HearingIcon>;
+        default:
             return <AllInclusiveIcon></AllInclusiveIcon>;
         }
       }

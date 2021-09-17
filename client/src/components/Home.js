@@ -32,15 +32,9 @@ function Home({ user, setUser, isLoading }){
     }
 
     return (
-        <div>
+        <div style = {{background: "rgb(246,93,145)", background: "linear-gradient(232deg, rgba(246,93,145,1) 0%, rgba(255,192,92,1) 100%)", height: "2000px"}}>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
             {!currentProject ? <> </> :<Sandbox currentProject={currentProject} setCurrentProject={setCurrentProject}/>}
-            {/* <ProjectDrawer 
-                projects={userProjects} 
-                setProjects={setUserProjects}
-                currentProject={currentProject}
-                setCurrentProject={setCurrentProject}
-                 /> */}
             <WidgetDrawer 
                 isOpen={widgetDrawerOpen} 
                 toggleDrawer={toggleWidgetDrawer}
@@ -49,7 +43,6 @@ function Home({ user, setUser, isLoading }){
                 projects={userProjects} 
                 setProjects={setUserProjects}   
                 />
-            <p>you are home</p>
         </div>
     )
 }
