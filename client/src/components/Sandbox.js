@@ -2,6 +2,7 @@
 import TextBoxWidget from "./TextBoxWidget"
 import RandomImageWidget from "./RandomImageWidget"
 import RhymifyWidget from "./RhymifyWidget"
+import WordAssociatorWidget from "./WordAssociatorWidget"
 import { Card } from '@material-ui/core'
 import CardContent from '@material-ui/core/CardContent';
 import Draggable, {DraggableCore} from 'react-draggable';
@@ -15,6 +16,9 @@ import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import HearingIcon from '@material-ui/icons/Hearing';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
+import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 
 
@@ -60,7 +64,15 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                                                                         widget_type={"RhymifyWidget"}
                                                                                         input_word={widget.RhymifyWidget.input_word}
                                                                                         color="#F9F871"
-                                                                                        />                                      
+                                                                                        />       
+                                                        case "WordAssociatorWidget":
+                                                             return <WordAssociatorWidget key={ index } 
+                                                                                        widget={widget} 
+                                                                                        widget_id={widget.WordAssociatorWidget.id} 
+                                                                                        widget_type={"WordAssociatorWidget"}
+                                                                                        input_word={widget.WordAssociatorWidget.input_word}
+                                                                                        color="#C9FCE9"
+                                                                                        />                                    
     } } )
  
     console.log(widgetList)
@@ -73,6 +85,8 @@ function Sandbox({ currentProject, setCurrentProject }) {
             return <TextFieldsIcon></TextFieldsIcon>;
          case 'RhymifyWidget':
             return <HearingIcon></HearingIcon>;
+        case 'WordAssociatorWidget':
+            return <SettingsEthernetIcon></SettingsEthernetIcon>;
         default:
             return <AllInclusiveIcon></AllInclusiveIcon>;
         }

@@ -3,6 +3,7 @@ import { TextField } from '@material-ui/core'
 import HearingIcon from '@material-ui/icons/Hearing';
 import { IconButton } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 
 function RhymifyWidget({ input_word }){
@@ -29,12 +30,12 @@ function RhymifyWidget({ input_word }){
             <HearingIcon fontSize="small" />
         </IconButton>
         <Grid style = {{marginTop: '20px'}} container spacing={4} justifyContent="center" alignItems="center">
-        {fetchedWords.map((obj, index) => { 
-            return (
-            <p key={index}>| {obj.word} | </p>
-            )}
-            )}
-        </Grid>
+            {fetchedWords.map((obj, index) => { 
+                return (
+                <Typography key={index}>| {obj.word} |</Typography>
+                )}
+                )}
+            </Grid>
         </>
     )
 }

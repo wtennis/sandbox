@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :word_associator_widgets
   # resources :rhymify_widgets
   resources :random_image_widgets, only: :update
   resources :text_box_widgets, only: [:update, :destroy]
