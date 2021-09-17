@@ -32,7 +32,6 @@ const [textContent, setTextContent] = useState(data)
 
     return (
         <>
-            <p>Write some words</p>
             <TextareaAutosize aria-label="minimum height" value = {textContent} minRows={8} onChange={(e)=> handleChange(e)}/>
             <br></br>
             <Button

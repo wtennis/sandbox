@@ -15,7 +15,7 @@ function ProjectHeader({ currentProject, setCurrentProject }){
 
     function updateProjectDetails(){
         setEditState(false)
-
+        setRevealEditButton(false)
         fetch(`/projects/${id}`, 
             {method: "PATCH", 
             headers: {"Content-Type": "application/json"},
@@ -34,20 +34,18 @@ function ProjectHeader({ currentProject, setCurrentProject }){
 
     return (
         <>
-        <div onMouseEnter={()=> setRevealEditButton(true)}>
-
-            {revealEditButton? <Button onClick={() => setEditState(true)}>{<EditIcon />}</Button> : null}
-
+        <div className="gluten" style={{marginLeft: "20px", marginTop: "20px", width: "40%", margin:"0 auto"}}onMouseEnter={()=> setRevealEditButton(true)} onMouseLeave={()=> setRevealEditButton(false)}>
                 <form>
+                        {revealEditButton? <Button style= {{float: "right"}}size="small" color="inherit"onClick={() => setEditState(true)}>{<EditIcon />}</Button> : null}
                         {editState? 
                                 <div>
                                     <TextField name= "title" onChange={handleChange}value={title}id="standard-basic" label="Title" />
                                     <TextareaAutosize name="description" onChange={handleChange}value={description} aria-label="minimum height" minRows={3} placeholder="Description" />
-                                    <Button onClick={updateProjectDetails}>{<CheckIcon />}</Button>
+                                    <Button style= {{float: "right"}}size="small" color="inherit" onClick={updateProjectDetails}>{<CheckIcon />}</Button>
                                 </div>
                             : 
                                 <div>
-                                    <h3>{title}</h3>
+                                    <h1>{title}</h1>
                                     <p>{description}</p>
                                 </div>
                             }

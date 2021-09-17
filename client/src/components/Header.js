@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-  },
+  }
 }));
 
 function Header({user, setUser, toggleWidgetDrawer }){
@@ -39,8 +39,8 @@ function Header({user, setUser, toggleWidgetDrawer }){
           <IconButton onClick={ toggleWidgetDrawer } edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
+          <h2 className="gluten">Sandbox</h2>
           <Typography variant="h6" className={classes.title}>
-            Sandbox
           </Typography>
           <Button color="inherit" onClick={handleSignout}>Sign out</Button>
         </Toolbar>

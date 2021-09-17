@@ -26,7 +26,6 @@ const useStyles = makeStyles({
     },
   });
 
-
 function Sandbox({ currentProject, setCurrentProject }) {
 
     const classes = useStyles()
