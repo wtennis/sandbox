@@ -3,9 +3,7 @@ import TextBoxWidget from "./TextBoxWidget"
 import RandomImageWidget from "./RandomImageWidget"
 import RhymifyWidget from "./RhymifyWidget"
 import { Card } from '@material-ui/core'
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Draggable, {DraggableCore} from 'react-draggable';
 import Grid from '@material-ui/core/Grid';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -17,18 +15,10 @@ import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import HearingIcon from '@material-ui/icons/Hearing';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
-import { makeStyles } from '@material-ui/core/styles';
 
 
-const useStyles = makeStyles({
-    card: {
-      margin: 20,
-    },
-  });
 
 function Sandbox({ currentProject, setCurrentProject }) {
-
-    const classes = useStyles()
 
     function removeWidget(id, type){
         fetch(`/widgets/${id}`, {method: 'DELETE', 
@@ -89,18 +79,18 @@ function Sandbox({ currentProject, setCurrentProject }) {
       }
 
     return (
-        <>
+        <div style={{width: "95%", margin: "auto"}}>
             <div>
                  <ProjectHeader currentProject={currentProject} setCurrentProject={setCurrentProject}/>
             </div>
             
-        <Grid container spacing={1} justifyContent="center" alignItems="center">
+        <Grid container spacing={2} justifyContent="center" >
         {widgetList.map((widget, index) => { 
             return (
-                
+                    
                     <Grid item xs={4} sm={3} lg={2} key={index}>
                         <Draggable cancel="strong">
-                            <Card raised className={classes.card}>
+                            <Card raised >
                             <CardHeader
                                     style={{ backgroundColor: widget.props.color }}
                                     avatar={
@@ -117,17 +107,16 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                 <strong>
                                     <CardContent className="no-cursor">
                                         {widget}
-                                        <CardActions>
-                                        </CardActions>
                                     </CardContent>
                                 </strong>
                             </Card>
                         </Draggable>
-                    </Grid>    
+                    </Grid>
                    )
         })}
         </Grid>
-        </>
+        </div>    
+
 
     )
 }
