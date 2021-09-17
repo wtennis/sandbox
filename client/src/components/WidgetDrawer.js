@@ -92,7 +92,7 @@ return (
                 {["Text Box", "Random Image", "Rhymify", "Word Associator"].map((text, index) => (
                 <ListItem button key={text} >
                     {renderWidgetIcon(text)}
-                    <ListItemText primary={text} onClick={() => addWidgetToProject(text)}/>
+                    <ListItemText style={{marginLeft: "12px"}}primary={text} onClick={() => addWidgetToProject(text)}/>
                 </ListItem>
                 ))}
             </List>
