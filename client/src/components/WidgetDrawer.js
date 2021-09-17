@@ -6,7 +6,11 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Button from '@material-ui/core/Button';
 import NewProject from './NewProject';
 import Box from '@material-ui/core/Box';
-
+import ImageIcon from '@material-ui/icons/Image';
+import TextFieldsIcon from '@material-ui/icons/TextFields';
+import HearingIcon from '@material-ui/icons/Hearing';
+import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
+import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
 
 function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, projects, setProjects}){
     
@@ -63,12 +67,31 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
         ))
     }
 
+
+    function renderWidgetIcon(param) {
+        switch(param) {
+        case 'Random Image':
+            return <ImageIcon></ImageIcon>;
+        case 'Text Box':
+            return <TextFieldsIcon></TextFieldsIcon>;
+         case 'Rhymify':
+            return <HearingIcon></HearingIcon>;
+        case 'Word Associator':
+            return <SettingsEthernetIcon></SettingsEthernetIcon>;
+        default:
+            return <AllInclusiveIcon></AllInclusiveIcon>;
+        }
+      }
+
+
+
 return (
        <> 
         <Drawer variant='temporary' anchor='left' open={isOpen} onClose={toggleDrawer}>
             <List>
                 {["Text Box", "Random Image", "Rhymify", "Word Associator"].map((text, index) => (
                 <ListItem button key={text} >
+                    {renderWidgetIcon(text)}
                     <ListItemText primary={text} onClick={() => addWidgetToProject(text)}/>
                 </ListItem>
                 ))}
