@@ -6,7 +6,7 @@ import { TextField, TextareaAutosize, Button } from '@material-ui/core'
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 
-function NewProject({setCurrentProject, toggleProjectDrawer}){
+function NewProject({setCurrentProject, toggleProjectDrawer, projects, setProjects}){
     const [open, setOpen] = useState(false);
     const [newProject, setNewProject] = useState({
         title: '',
@@ -43,20 +43,17 @@ const classes = useStyles();
     setOpen(false);
   };
 
-  const handleCreate = () => {
-    console.log(newProject);
-    fetch('/projects', {
+  async function handleCreate(){
+    let response = await fetch('/projects', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newProject)
     })
-    .then(r => r.json())
-    .then(r => {
-      setCurrentProject(r);
-      toggleProjectDrawer();
-    })
+    .then(res => res.json());
+    setCurrentProject(response);
+    toggleProjectDrawer();
   };
 
     return (
