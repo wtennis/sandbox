@@ -28,7 +28,7 @@ function RhymifyWidget({ input_word }){
         <IconButton onClick={fetchRhymes} size="small" color="primary">
             <HearingIcon fontSize="small" />
         </IconButton>
-        <Grid container spacing={4} justifyContent="center" alignItems="center">
+        <Grid style = {{marginTop: '20px'}} container spacing={4} justifyContent="center" alignItems="center">
         {fetchedWords.map((obj, index) => { 
             return (
             <p key={index}>| {obj.word} | </p>

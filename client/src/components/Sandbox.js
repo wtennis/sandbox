@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Draggable, {DraggableCore} from 'react-draggable';
 import Grid from '@material-ui/core/Grid';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton } from "@material-ui/core";
 import ProjectHeader from "./ProjectHeader";
 import { CardHeader } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
@@ -105,32 +106,22 @@ function Sandbox({ currentProject, setCurrentProject }) {
                                         {renderWidgetIcon(widget.props.widget_type)}
                                     </Avatar>
                                     }
-                                    // action={
-                                    // <IconButton aria-label="settings">
-                                    //     <MoreVertIcon />
-                                    // </IconButton>
-                                    // }
+                                    action={
+                                    <IconButton onClick={()=> removeWidget(widget.props.widget_id, widget.props.widget_type)}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                    }
                                 />
                                 <strong>
                                     <CardContent className="no-cursor">
                                         {widget}
                                         <CardActions>
-                                            <Button
-                                                variant="contained"
-                                                onClick={()=> removeWidget(widget.props.widget_id, widget.props.widget_type)}
-                                                color="secondary"
-                                                size="small"
-                                                startIcon={<DeleteIcon />}
-                                                >
-                                                Delete
-                                            </Button>
                                         </CardActions>
                                     </CardContent>
                                 </strong>
                             </Card>
                         </Draggable>
                     </Grid>    
-                
                    )
         })}
         </Grid>
