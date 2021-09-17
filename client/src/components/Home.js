@@ -3,6 +3,8 @@ import Header from './Header'
 import WidgetDrawer from './WidgetDrawer'
 import { useState, useEffect } from 'react'
 import Sandbox from './Sandbox'
+import { Button } from '@material-ui/core';
+
 
 function Home({ user, setUser, isLoading }){
     const [widgetDrawerOpen, setWidgetDrawerOpen] = useState(true)
@@ -29,10 +31,21 @@ function Home({ user, setUser, isLoading }){
         setWidgetDrawerOpen((widgetDrawerOpen) => !widgetDrawerOpen)
     }
 
+    function handleGetStarted(){
+        toggleWidgetDrawer();
+    }
+
+
     return (
         <div>
             <Header setUser={setUser} toggleWidgetDrawer={toggleWidgetDrawer}/>
-            {!currentProject ? <> </> :<Sandbox currentProject={currentProject} setCurrentProject={setCurrentProject}/>}
+            {!currentProject ? 
+            <>
+            <div style={{marginTop: "5%", marginLeft: "36%"}}>
+                <Button onClick={handleGetStarted}><h1 style = {{fontSize: "50px"}}className="gluten">Get Started</h1></Button>
+            </div>
+            </> 
+            :<Sandbox currentProject={currentProject} setCurrentProject={setCurrentProject}/>}
             <WidgetDrawer 
                 isOpen={widgetDrawerOpen} 
                 toggleDrawer={toggleWidgetDrawer}
