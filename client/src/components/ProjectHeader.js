@@ -54,6 +54,7 @@ function ProjectHeader({ currentProject, setCurrentProject }){
                                     <TextField fullWidth="true" name="title" onChange={handleChange}value={title}id="standard-basic" label="Title" />
                                     <TextareaAutosize style={{width: "80%"}}name="description" onChange={handleChange}value={description} aria-label="minimum height" minRows={3} placeholder="Description" />
                                     <Button style= {{float: "right"}} color="inherit" onClick={updateProjectDetails}>{<CheckIcon />}</Button>
+
                                 </div>
                             : 
                                 <div>
