@@ -18,6 +18,10 @@ class WidgetsController < ApplicationController
             widgetable = RhymifyWidget.create(input_word: "orange")
             project_widget = ProjectWidget.create(project_id: params[:project_id], widgetable_id: widgetable.id, widgetable_type: "RhymifyWidget")
             widgetable = {"RhymifyWidget" => widgetable}
+        when "WordAssociatorWidget"
+            widgetable = WordAssociatorWidget.create(input_word: "giraffe")
+            project_widget = ProjectWidget.create(project_id: params[:project_id], widgetable_id: widgetable.id, widgetable_type: "WordAssociatorWidget")
+            widgetable = {"WordAssociatorWidget" => widgetable}
         end
         render json: widgetable, status: :created
     end
@@ -34,6 +38,9 @@ class WidgetsController < ApplicationController
         when "RhymifyWidget"
             widget = RhymifyWidget.find_by(id: params[:id])
             project_widget = ProjectWidget.where(widgetable_id: params[:id], widgetable_type: "RhymifyWidget")
+        when "WordAssociatorWidget"
+            widget = WordAssociatorWidget.find_by(id: params[:id])
+            project_widget = ProjectWidget.where(widgetable_id: params[:id], widgetable_type: "WordAssociatorWidget")
         end
         project_widget[0].destroy
         widget.destroy
