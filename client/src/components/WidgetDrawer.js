@@ -49,7 +49,6 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
     //Things for the project portion of the drawer
     function handleClick(project){
         setCurrentProject(project);
-        console.log(currentProject)
         toggleDrawer();
     }
 
@@ -80,8 +79,6 @@ function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, 
         }
       }
 
-
-
 return (
        <> 
         <Drawer variant='temporary' anchor='left' open={isOpen} onClose={toggleDrawer}>
@@ -95,17 +92,23 @@ return (
             </List>
             <Divider />
             <Box mx="auto" m={2}>
-             <NewProject setCurrentProject={setCurrentProject} toggleProjectDrawer={toggleDrawer}/>
-            </Box>
-            <List>
-                {projects.map((project, index) => (
-                <ListItem button key={project.id} >
-                    <Button onClick={() => deleteProject(project.id)}>{<DeleteForeverIcon />}</Button>
-                    <ListItemText primary={project.title} onClick={() => handleClick(project)}/>
-                </ListItem>
-                ))}
-            </List>
-        </Drawer>
+             <NewProject setCurrentProject={setCurrentProject} toggleProjectDrawer={toggleDrawer} projects={projects} setProjects={setProjects}/>
+                </Box>
+                        <div>
+                                {projects ? 
+                                        <List>
+                                            {projects.map((project, index) => (
+                                                <ListItem button key={project.id} >
+                                                    <Button onClick={() => deleteProject(project.id)}>{<DeleteForeverIcon />}</Button>
+                                                    <ListItemText  style={{textDecorationLine: project == currentProject? 'underline': ''}} primary={project.title} onClick={() => handleClick(project)}/>
+                                                </ListItem>
+                                                ))}
+                                        </List>
+                                    : 
+                                        null
+                                    }
+                        </div>
+            </Drawer>
         </>
     )
 }
