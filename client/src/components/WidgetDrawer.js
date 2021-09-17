@@ -1,16 +1,13 @@
-import { Divider, Drawer } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import Button from '@material-ui/core/Button';
 import NewProject from './NewProject';
-import Box from '@material-ui/core/Box';
+import { Divider, Drawer, ListItem, ListItemText, Button, Box, List } from '@material-ui/core';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
 import HearingIcon from '@material-ui/icons/Hearing';
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
+
+
 
 function WidgetDrawer({isOpen, toggleDrawer, currentProject, setCurrentProject, projects, setProjects}){
     
