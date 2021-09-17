@@ -39,7 +39,7 @@ function ProjectHeader({ currentProject, setCurrentProject }){
                         {revealEditButton? <Button style= {{float: "right"}}size="small" color="inherit"onClick={() => setEditState(true)}>{<EditIcon />}</Button> : null}
                         {editState? 
                                 <div>
-                                    <TextField name= "title" onChange={handleChange}value={title}id="standard-basic" label="Title" />
+                                    <TextField fullWidth="true" name="title" onChange={handleChange}value={title}id="standard-basic" label="Title" />
                                     <TextareaAutosize name="description" onChange={handleChange}value={description} aria-label="minimum height" minRows={3} placeholder="Description" />
                                     <Button style= {{float: "right"}}size="small" color="inherit" onClick={updateProjectDetails}>{<CheckIcon />}</Button>
                                 </div>

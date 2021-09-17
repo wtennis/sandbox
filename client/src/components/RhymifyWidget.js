@@ -26,7 +26,7 @@ function RhymifyWidget({ input_word }){
                 value={input}
                 onChange={(e)=> setInput(e.target.value)}
             />
-        <IconButton onClick={fetchRhymes} size="small" color="primary">
+        <IconButton  style={{backgroundColor: "#F9F871", float: "right"}} onClick={fetchRhymes} size="small" color="primary">
             <HearingIcon fontSize="small" />
         </IconButton>
         <Grid style = {{marginTop: '20px'}} container spacing={4} justifyContent="center" alignItems="center">
