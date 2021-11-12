@@ -3,7 +3,7 @@
 Sandbox is a creative sandbox where users can pull in image and word inspiration, arranging them as they see fit. 
 
 ## Usage
-to play around with the app go to 
+to play around with the app go to https://quiet-stream-10178.herokuapp.com/
 
 ~OR~
 
